@@ -10,7 +10,6 @@ mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 
-
 def steering():
     success, img = cap.read()
     cv2.waitKey(1)

@@ -1,5 +1,6 @@
 import pygame
 
+
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self):
         super(Obstacle, self).__init__()
