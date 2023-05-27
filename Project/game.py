@@ -1,7 +1,6 @@
-from player import Player
 import arcade
 from world import World
-from obstale import Obstacle
+from player import Player
 
 SCREEN_TITLE = 'At The Wheel'
 

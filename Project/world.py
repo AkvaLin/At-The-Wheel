@@ -1,7 +1,7 @@
-import pygame
 from boundary import Boundary
 import arcade
 import math
+
 
 class World(arcade.Sprite):
     def __init__(self):

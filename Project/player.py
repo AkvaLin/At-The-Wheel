@@ -7,6 +7,7 @@ PLAYER_X_MIN = 220
 PLAYER_Y = 360
 TURN_SPEED = 100
 
+
 class Player(arcade.Sprite):
     def __init__(self, max_hp):
         super().__init__('sprites/Car.png', center_x=PLAYER_X_DEFAULT, center_y=PLAYER_Y, scale=1.5)
