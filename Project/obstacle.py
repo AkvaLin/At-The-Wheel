@@ -3,8 +3,8 @@ import arcade
 
 
 class Obstacle(arcade.Sprite):
-    def __init__(self):
-        super().__init__('sprites/Obstacle.png', center_x=330, center_y=300)
+    def __init__(self, x, y):
+        super().__init__('sprites/Obstacle.png', center_x=x, center_y=y, scale=0.3)
 
     def rotate_around_point(self, point, degrees, change_angle=True):
         if change_angle:

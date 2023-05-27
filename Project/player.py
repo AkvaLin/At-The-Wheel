@@ -29,4 +29,5 @@ class Player(arcade.Sprite):
             self.center_x += TURN_SPEED * delta_time
 
     def get_damage(self):
-        self.hp -= 1
+        if self.hp > 1:
+            self.hp -= 1
