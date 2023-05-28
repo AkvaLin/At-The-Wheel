@@ -3,18 +3,13 @@ from world import World
 from player import Player
 from obstacleSpawner import ObstacleSpawner
 
-SCREEN_TITLE = 'At The Wheel'
-
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
-
 ANGLES = (720, 1080, 1440)
 
 
-class AtTheWheel(arcade.Window):
+class GameView(arcade.View):
 
     def __init__(self):
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, resizable=True)
+        super().__init__()
 
         self.world = None
         self.scene = None
@@ -47,6 +42,11 @@ class AtTheWheel(arcade.Window):
         arcade.start_render()
         self.clear()
         self.scene.draw()
+
+        arcade.draw_text('Speed : ' + str(self.angle // 10), 50.0, 100.0,
+                         arcade.color.BLACK, 32, 180, 'left', arcade.load_font('fonts/Roboto-Light.ttf'), True)
+        arcade.draw_text('HP : ' + str(self.player.hp), 50.0, 630.0,
+                         arcade.color.BLACK, 32, 180, 'left', arcade.load_font('fonts/Roboto-Light.ttf'), True)
 
     def on_update(self, delta_time: float):
         self.world.on_update(self.angle, delta_time)
