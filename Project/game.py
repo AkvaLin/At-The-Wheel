@@ -4,7 +4,6 @@ from player import Player
 from obstacleSpawner import ObstacleSpawner
 from pydispatch import dispatcher
 
-
 ANGLES = (720, 1080, 1440)
 
 

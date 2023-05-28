@@ -3,6 +3,7 @@ from mainMenu import MainMenu
 from game import GameView
 from defeatMenu import DefeatMenu
 
+
 class EventHandler:
     def __init__(self, window):
         self.window = window

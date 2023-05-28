@@ -10,11 +10,13 @@ class MainMenu(arcade.View):
 
         self.manager = arcade.gui.UIManager()
 
+        label = arcade.gui.UILabel(text="At The Wheel", font_size=52, bold=True)
         start_button = arcade.gui.UIFlatButton(text="Start", width=250)
         exit_button = arcade.gui.UIFlatButton(text="Exit", width=250)
 
         self.box = arcade.gui.UIBoxLayout(space_between=20)
 
+        self.box.add(label)
         self.box.add(start_button)
         self.box.add(exit_button)
 

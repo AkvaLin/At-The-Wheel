@@ -10,11 +10,13 @@ class DefeatMenu(arcade.View):
 
         self.manager = arcade.gui.UIManager()
 
+        defeat_lbl = arcade.gui.UILabel(text="Defeat", font_size=48)
         restart_button = arcade.gui.UIFlatButton(text="Restart", width=250)
         exit_button = arcade.gui.UIFlatButton(text="Exit", width=250)
 
         self.box = arcade.gui.UIBoxLayout(space_between=20)
 
+        self.box.add(defeat_lbl)
         self.box.add(restart_button)
         self.box.add(exit_button)
 
