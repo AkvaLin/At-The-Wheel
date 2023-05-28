@@ -8,6 +8,8 @@ SCREEN_TITLE = 'At The Wheel'
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
+ANGLES = (720, 1080, 1440)
+
 
 class AtTheWheel(arcade.Window):
 
@@ -17,13 +19,17 @@ class AtTheWheel(arcade.Window):
         self.world = None
         self.scene = None
         self.player = None
-        self.angle = 1080
+        self.selected_angle = None
+        self.angle = None
         self.obstacle_amount = 3
         self.spawner = ObstacleSpawner()
         self.is_collision = False
         self.current_collision = None
 
     def setup(self):
+        self.selected_angle = 1
+        self.angle = ANGLES[self.selected_angle]
+
         arcade.set_background_color(arcade.color.AERO_BLUE)
         self.world = World()
         self.scene = arcade.Scene()
@@ -44,7 +50,7 @@ class AtTheWheel(arcade.Window):
 
     def on_update(self, delta_time: float):
         self.world.on_update(self.angle, delta_time)
-        self.angle = 1080
+        self.angle = ANGLES[self.selected_angle]
         for boundary in self.world.boundaries_list:
             if arcade.check_for_collision(self.player, boundary):
                 self.angle = 500
@@ -59,3 +65,12 @@ class AtTheWheel(arcade.Window):
                     self.is_collision = False
             obstacle.rotate_around_point(self.world.position, self.angle * delta_time)
         self.player.on_update(delta_time)
+
+    def on_key_press(self, symbol: int, modifiers: int):
+
+        if symbol == arcade.key.KEY_1:
+            self.selected_angle = 0
+        elif symbol == arcade.key.KEY_2:
+            self.selected_angle = 1
+        elif symbol == arcade.key.KEY_3:
+            self.selected_angle = 2
