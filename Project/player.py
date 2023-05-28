@@ -31,3 +31,5 @@ class Player(arcade.Sprite):
     def get_damage(self):
         if self.hp > 1:
             self.hp -= 1
+        else:
+            return -1

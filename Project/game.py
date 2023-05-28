@@ -2,6 +2,8 @@ import arcade
 from world import World
 from player import Player
 from obstacleSpawner import ObstacleSpawner
+from pydispatch import dispatcher
+
 
 ANGLES = (720, 1080, 1440)
 
@@ -56,7 +58,9 @@ class GameView(arcade.View):
                 self.angle = 500
         for obstacle in self.spawner.obstacles_list:
             if arcade.check_for_collision(self.player, obstacle) and not self.is_collision:
-                self.player.get_damage()
+                result = self.player.get_damage()
+                if result == -1:
+                    dispatcher.send('defeat')
                 self.is_collision = True
                 self.current_collision = obstacle
             elif obstacle == self.current_collision and self.is_collision:
@@ -74,3 +78,5 @@ class GameView(arcade.View):
             self.selected_angle = 1
         elif symbol == arcade.key.KEY_3:
             self.selected_angle = 2
+        elif symbol == arcade.key.ESCAPE:
+            dispatcher.send('main')

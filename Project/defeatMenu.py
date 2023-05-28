@@ -3,33 +3,33 @@ import arcade.gui
 from pydispatch import dispatcher
 
 
-class MainMenu(arcade.View):
+class DefeatMenu(arcade.View):
 
     def __init__(self):
         super().__init__()
 
         self.manager = arcade.gui.UIManager()
 
-        start_button = arcade.gui.UIFlatButton(text="Start", width=250)
+        restart_button = arcade.gui.UIFlatButton(text="Restart", width=250)
         exit_button = arcade.gui.UIFlatButton(text="Exit", width=250)
 
         self.box = arcade.gui.UIBoxLayout(space_between=20)
 
-        self.box.add(start_button)
+        self.box.add(restart_button)
         self.box.add(exit_button)
 
-        @start_button.event("on_click")
-        def on_click_start_button(event):
+        @restart_button.event("on_click")
+        def on_click_restart_button(event):
             dispatcher.send('start')
 
         @exit_button.event("on_click")
         def on_click_exit_button(event):
-            arcade.close_window()
+            dispatcher.send('main')
 
         self.anchor = self.manager.add(arcade.gui.UIAnchorWidget(child=self.box))
 
     def on_show_view(self):
-        arcade.set_background_color(arcade.color.AERO_BLUE)
+        arcade.set_background_color(arcade.color.DARK_CANDY_APPLE_RED)
 
         self.manager.enable()
 
